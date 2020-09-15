@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="pButtonBar" maxHeight="30.0" prefHeight="30.0" prefWidth="1400.0" style="-fx-background-color: rgba(0, 0, 0, 0.7)rgba(0, 0, 0, 0.7);">
+         <children>
+            <Button fx:id="gebruiker" layoutX="1104.0" layoutY="1.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="289.0" text="gebruiker" style="-fx-background-color: grey;" />
+         </children></Pane>
+      <TabPane fx:id="tabPane" layoutY="30.0" maxHeight="770.0" maxWidth="-Infinity" minWidth="1400.0" prefHeight="770.0" prefWidth="1400.0" />
+   </children>
+</fx:root>

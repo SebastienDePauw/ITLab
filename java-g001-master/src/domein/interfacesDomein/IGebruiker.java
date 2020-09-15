@@ -1,0 +1,32 @@
+package domein.interfacesDomein;
+
+import java.awt.image.BufferedImage;
+import java.time.LocalDate;
+
+public interface IGebruiker {
+    String getNaam();
+
+    String getGebruikersnaam();
+
+    String getStatus();
+
+    String getGebruikersprofiel();
+
+    BufferedImage getProfielfoto();
+
+    LocalDate getLaatstIngelogd();
+
+    String getWachtwoord();
+
+    long getBarcode();
+
+    IMedia getAfb();
+
+    //List<IFeedback> getIFeedbackList();
+
+    //List<IAankondiging> getIAankondigingList();
+
+    //List<IInschrijving> getIInschrijvingList();
+
+    //List<IMedia> getIMediaList();
+}

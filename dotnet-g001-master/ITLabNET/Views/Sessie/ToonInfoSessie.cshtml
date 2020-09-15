@@ -1,0 +1,44 @@
+﻿@model Sessie
+@{
+    ViewData["Title"] = Model.Titel;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<a class="btn btn-secondary" asp-controller="Sessie" asp-action="Index" data-toggle="tooltip" data-placement="bottom" title="Terug" style="width:10% ;margin-top: 5px; margin-right: 5px; margin-bottom: 5px;">
+    <i class="fas fa-arrow-alt-circle-left"></i>
+</a>
+@*<h2>@ViewData["Title"]</h2>*@
+
+<div class="">
+
+
+    <div class="jumbotron">
+        <h1 class="display-4">
+            @Model.Titel @if (@Model.EindeUur < DateTime.Now)
+        {<span class="badge badge-danger">@Model.CurrentState.ToString()</span>}
+    else
+    {<span class="badge badge-success">@Model.CurrentState.ToString()</span>}
+        </h1>
+        <hr class="my-4">
+        <p class="lead"><strong>Beschrijving:</strong> @Model.Beschrijving</p>
+        <p class="lead"><strong>Gastspreker:</strong> @Model.NaamGastSpreker</p>
+        <p class="lead"><strong>@Model.StartUur.ToShortDateString()</strong> | <i>@Model.StartUur.ToShortTimeString() - @Model.EindeUur.ToShortTimeString()</i></p>
+        <p class="lead"><strong>@Model.Lokaal.Stad.Naam</strong><i> @Model.Lokaal.Stad.Postcode</i> | <strong>@Model.Lokaal.Campus.Naam</strong> </p>
+        <p class="lead"><strong>Lokaal:</strong> @Model.Lokaal.Gebouw.Naam - @Model.Lokaal.LokaalCode</p>
+        <p class="lead"><strong>Organisator:</strong> @Model.Verantwoordelijke.Naam</p>
+        <p class="lead"><strong>Aantal ingeschreven:</strong> @Model.Inschrijvingen.Count</p>
+        <p class="lead"><strong>Max. aantal plaatsen:</strong> @Model.MaximumAantalPlaatsen</p>
+
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Gebruiker"))
+        {
+            @if (Model.Inschrijvingen.Any(e => e.Gebruiker.Gebruikersnaam == User.Identity.Name))
+            {
+                <a class="btn btn-warning" asp-controller="Sessie" asp-action="SchrijfUit" asp-route-id="@Model.SessieId" data-toggle="tooltip" data-placement="bottom" title="Uitschrijven" style="width: 20%"><i class="far fa-calendar-minus">Uitschrijven</i></a>
+            }
+            else
+            {
+                <a class="btn btn-info" asp-controller="Sessie" asp-action="SchrijfIn" asp-route-id="@Model.SessieId" data-toggle="tooltip" data-placement="bottom" title="Inschrijven" style="width: 20%"><i class="far fa-calendar-plus">Inschrijven</i></a>
+
+            }}
+    </div>
+
+</div>
